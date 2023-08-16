@@ -7,16 +7,15 @@ client.on('ready', () => {
 	console.log(`💻 ${client.user.tag} is started!`)
 
 	const updateActivity = async () => {
-		steamServerStatus.getServerStatus(config.IP, config.PORT, function(serverInfo) {
-			if (serverInfo.error) {
-				console.log(serverInfo.error);
-				client.user.setActivity("server timed out.", { type: ActivityType.Watching })
+		steamServerStatus.getServerStatus(config.IP, config.PORT, function(server) {
+			if (server.error) {
+				console.log(server.error);
+				client.user.setActivity("server timed out.", { type: ActivityType.Watching });
 			} else {
-				client.user.setActivity(serverInfo.numberOfPlayers + "/" + serverInfo.maxNumberOfPlayers + ' joueurs.', { type: ActivityType.Watching })
+				client.user.setActivity(server.numberOfPlayers + "/" + server.maxNumberOfPlayers + ' players.', { type: ActivityType.Watching });
 			}
 		}
 	)};
-	
 	updateActivity();
 	setInterval(updateActivity, 60000);
 });

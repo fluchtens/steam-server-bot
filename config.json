@@ -1,5 +1,5 @@
 {
-    "TOKEN": "YOUR TOKEN",
-    "IP": "141.94.98.193",
+    "TOKEN": "YOUR_BOT_TOKEN",
+    "IP": "YOUR_SERVER_IP",
     "PORT": 27015
 }
